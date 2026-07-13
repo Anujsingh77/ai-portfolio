@@ -42,6 +42,24 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
+  // Naya function jo smooth scroll handle karega aur menu close karega
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    setOpen(false); // Mobile menu band karne ke liye
+    
+    const element = document.getElementById(targetId);
+    if (element) {
+      const headerOffset = 80; // Navbar ki height taaki content kate nahi
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
@@ -56,6 +74,7 @@ export default function Navbar() {
         >
           <a
             href="#hero"
+            onClick={(e) => handleNavClick(e, 'hero')}
             className="font-display text-lg font-semibold tracking-tight"
           >
             <span className="text-ink-900 dark:text-mist-50">Anuj</span>
@@ -69,6 +88,7 @@ export default function Navbar() {
               <a
                 key={l.id}
                 href={`#${l.id}`}
+                onClick={(e) => handleNavClick(e, l.id)}
                 className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
                   active === l.id
                     ? "bg-ink-900/5 text-aqua-600 dark:bg-white/10 dark:text-neon-blue"
@@ -130,7 +150,7 @@ export default function Navbar() {
                   <a
                     key={l.id}
                     href={`#${l.id}`}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => handleNavClick(e, l.id)}
                     className={`rounded-xl px-4 py-3 text-sm font-medium ${
                       active === l.id
                         ? "bg-ink-900/5 text-aqua-600 dark:bg-white/10 dark:text-neon-blue"
