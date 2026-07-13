@@ -10,7 +10,7 @@ export const profile = {
   location: "Hanumangarh, Rajasthan, India",
   github: "https://github.com/Anujsingh77",
   linkedin: "https://www.linkedin.com/in/anuj-singh-ds/",
-  resumeUrl: "/anuj-singh-resume.pdf",
-  profileImage: "/images/profile.jpg",
-  introVideo: "/videos/intro.mp4",
+  resumeUrl: `${import.meta.env.BASE_URL}anuj-singh-resume.pdf`,
+  profileImage: `${import.meta.env.BASE_URL}images/profile.jpg`,
+  introVideo: `${import.meta.env.BASE_URL}videos/intro.mp4`,
 };
