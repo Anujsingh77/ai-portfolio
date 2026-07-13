@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anuj Singh — AI &amp; Machine Learning Enthusiast</title>
+    <meta
+      name="description"
+      content="Anuj Singh — AI &amp; Machine Learning Enthusiast, Google &amp; Gemini Student Ambassador. BCA student building end-to-end machine learning systems."
+    />
+    <meta name="theme-color" content="#0a0e1a" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      GitHub Pages SPA redirect decoder.
+      Works together with public/404.html so that deep links / refreshes on a
+      GitHub Pages *project* subpath (username.github.io/repo/section) never
+      show a blank white screen. Safe no-op on any other host.
+      Credit: spa-github-pages technique (rafgraph).
+    -->
+    <script>
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

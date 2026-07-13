@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body antialiased transition-colors duration-300;
+    @apply bg-mist-50 text-ink-900;
+  }
+
+  html.dark body {
+    @apply bg-ink-900 text-mist-100;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-neon-violet/30;
+  }
+
+  /* Visible keyboard focus everywhere, always */
+  :focus-visible {
+    outline: 2px solid #7c6cff;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 dark:bg-ink-800/50 backdrop-blur-xl;
+    @apply border border-ink-900/5 dark:border-white/10;
+    @apply shadow-glass-light dark:shadow-glass;
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs tracking-[0.2em] uppercase text-aqua-600 dark:text-neon-blue;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium text-sm;
+    @apply bg-ink-900 text-white dark:bg-gradient-to-r dark:from-neon-violet dark:to-neon-blue dark:text-white;
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg;
+    @apply dark:hover:shadow-neon;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium text-sm;
+    @apply border border-ink-900/15 dark:border-white/20 text-ink-900 dark:text-mist-100;
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:border-aqua-500 dark:hover:border-neon-violet;
+  }
+
+  .pill {
+    @apply font-mono text-[11px] tracking-wide px-2.5 py-1 rounded-full;
+    @apply bg-ink-900/5 dark:bg-white/10 text-ink-700 dark:text-mist-200;
+    @apply border border-ink-900/5 dark:border-white/10;
+  }
+
+  .section-heading {
+    @apply text-3xl sm:text-4xl font-display font-semibold tracking-tight;
+  }
+}
+
+/* Thin, theme-aware scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 108, 255, 0.35);
+  border-radius: 999px;
+}

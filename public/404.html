@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Anuj Singh — Portfolio</title>
+    <!--
+      GitHub Pages serves this file for any unknown path on a project site
+      (username.github.io/repo/whatever). Instead of showing a dead end, we
+      re-encode the path into a query string and bounce back to index.html,
+      where the decoder script in index.html restores the real URL.
+      This is what prevents the "blank white screen" on refresh / deep links.
+    -->
+    <script>
+      var segmentCount = 1; // matches a single-level repo base path, e.g. /portfolio/
+      var l = window.location;
+      var redirect =
+        l.protocol +
+        "//" +
+        l.hostname +
+        (l.port ? ":" + l.port : "") +
+        l.pathname
+          .split("/")
+          .slice(0, 1 + segmentCount)
+          .join("/") +
+        "/?/" +
+        l.pathname
+          .split("/")
+          .slice(1 + segmentCount)
+          .join("/")
+          .replace(/&/g, "~and~") +
+        (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+        l.hash;
+      window.location.replace(redirect);
+    </script>
+  </head>
+  <body></body>
+</html>
