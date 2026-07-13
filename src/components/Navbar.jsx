@@ -42,22 +42,24 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  // Naya function jo smooth scroll handle karega aur menu close karega
+  // Is naye function me maine 'setTimeout' lagaya hai taaki menu aaram se band ho jaye uske baad scroll ho
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
-    setOpen(false); // Mobile menu band karne ke liye
-    
-    const element = document.getElementById(targetId);
-    if (element) {
-      const headerOffset = 80; // Navbar ki height taaki content kate nahi
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    setOpen(false); // Pehle menu band karo
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
+    setTimeout(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        const headerOffset = 80; 
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }, 200); // 0.2 seconds ka delay taaki animation scroll ko block na kare
   };
 
   return (
